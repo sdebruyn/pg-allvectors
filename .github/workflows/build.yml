@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         debian_version: [bookworm, bullseye]
-        pg_version: [16, 17]
+        pg_version: [14, 15, 15, 16, 17]
     
     steps:
       - name: Checkout Code
