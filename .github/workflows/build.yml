@@ -51,7 +51,7 @@ jobs:
           build-args: |
             PG_VERSION=${{ matrix.pg_version }}
             DEBIAN_VERSION=${{ matrix.debian_version }}
-          tags: ${{ matrix.pg_version }}-${{ matrix.debian_version }}
+          tags: ghcr.io/${{ github.repository }}:${{ matrix.pg_version }}-${{ matrix.debian_version }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }}
           cache-to: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }},mode=max
