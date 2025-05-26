@@ -18,9 +18,9 @@ jobs:
       matrix:
         debian_version: [bookworm]
         pg_version: [14, 15, 15, 16, 17]
-        pgvector_version: ['0.8.0']
-        vectors_version: ['0.4.0']
-        vchord_version: ['0.4.1']
+        pgvector_version: ['0.7.0', '0.7.1', '0.7.2', '0.7.3', '0.7.4', '0.8.0']
+        vectors_version: ['0.3.0', '0.4.0']
+        vchord_version: ['0.3.0', '0.4.0', '0.4.1']
     
     steps:
       - name: Checkout Code
