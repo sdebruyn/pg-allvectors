@@ -18,6 +18,9 @@ jobs:
       matrix:
         debian_version: [bookworm]
         pg_version: [14, 15, 15, 16, 17]
+        pgvector_version: ['0.8.0']
+        vectors_version: ['0.4.0']
+        vchord_version: ['0.4.1']
     
     steps:
       - name: Checkout Code
@@ -38,12 +41,6 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract Docker Metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/${{ github.repository }}
-
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
@@ -53,7 +50,9 @@ jobs:
           build-args: |
             PG_VERSION=${{ matrix.pg_version }}
             DEBIAN_VERSION=${{ matrix.debian_version }}
-          tags: ghcr.io/${{ github.repository }}:${{ matrix.pg_version }}-${{ matrix.debian_version }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }}
-          cache-to: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }},mode=max
+            PGVECTOR_VERSION=${{ matrix.pgvector_version }}
+            VECTORS_VERSION=${{ matrix.vectors_version }}
+            VCHORD_VERSION=${{ matrix.vchord_version }}
+          tags: ghcr.io/${{ github.repository }}:pg${{ matrix.pg_version }}-${{ matrix.debian_version }}-pgvector${{ matrix.pgvector_version }}-vectors${{ matrix.vectors_version }}-vchord${{ matrix.vchord_version }}
+          cache-from: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }}-pgvector${{ matrix.pgvector_version }}-vectors${{ matrix.vectors_version }}-vchord${{ matrix.vchord_version }}
+          cache-to: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }}-pgvector${{ matrix.pgvector_version }}-vectors${{ matrix.vectors_version }}-vchord${{ matrix.vchord_version }},mode=max

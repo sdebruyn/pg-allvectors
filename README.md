@@ -12,21 +12,10 @@ Since migrations from one to the other typically require at least 2 of the above
 
 ## Usage
 
-Just replace your Postgres image with one of the following:
-
-* `ghcr.io/sdebruyn/pg-allvectors:17-bookworm`
-* `ghcr.io/sdebruyn/pg-allvectors:16-bookworm`
-* `ghcr.io/sdebruyn/pg-allvectors:15-bookworm`
-* `ghcr.io/sdebruyn/pg-allvectors:14-bookworm`
+Just replace your Postgres image with any of the images available [here](https://github.com/sdebruyn/pg-allvectors/pkgs/container/pg-allvectors/versions?filters%5Bversion_type%5D=tagged).
 
 ## Versions
 
-Pick the Postgres version from the list above that matches your needs. The `bookworm` tag refers to the Debian Bookworm base image.
-
-The following versions of the extensions are installed:
-
-* pgvector: 0.8.0
-* pgvecto.rs: 0.4.0
-* VectorChord: 0.4.1
+The versions of Debian, Postgres, pgvector, pgvecto.rs, and VectorChord are mentioned in the tag. Pick the combination that suits your needs.
 
 Feel free to open an issue if you need a different version of Postgres or any of the extensions.
