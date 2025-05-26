@@ -33,3 +33,5 @@ RUN set -e && \
     "https://github.com/tensorchord/VectorChord/releases/download/${VCHORD_VERSION}/postgresql-${PG_VERSION}-vchord_${VCHORD_VERSION}-1_${ARCH}.deb" && \
     dpkg -i /tmp/vchord.deb && \
     rm -f /tmp/vchord.deb
+
+CMD ["postgres", "-c" ,"shared_preload_libraries=vectors.so,vchord.so", "-c", "search_path=\"$user\", public, vectors", "-c", "logging_collector=on"]
