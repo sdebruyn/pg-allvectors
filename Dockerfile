@@ -5,7 +5,7 @@ ARG PG_VERSION=16
 ARG VECTORS_VERSION=0.4.0
 ARG VCHORD_VERSION=0.4.1
 
-RUN --mount=source=./pgvector,target=/tmp/pgvector_mount cp /tmp/pgvector_mount /tmp/pgvector && \
+RUN --mount=source=./pgvector,target=/tmp/pgvector_mount cp -r /tmp/pgvector_mount /tmp/pgvector && \
     apt-get update && \
     apt-mark hold locales && \
     apt-get install -y --no-install-recommends curl build-essential postgresql-server-dev-$PG_VERSION && \
