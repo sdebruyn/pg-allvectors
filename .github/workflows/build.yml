@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        debian_version: [bookworm, bullseye]
+        debian_version: [bookworm]
         pg_version: [14, 15, 15, 16, 17]
     
     steps:
