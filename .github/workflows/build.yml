@@ -21,6 +21,9 @@ jobs:
         pgvector_version: ['0.7.0', '0.7.1', '0.7.2', '0.7.3', '0.7.4', '0.8.0']
         vectors_version: ['0.3.0', '0.4.0']
         vchord_version: ['0.3.0', '0.4.0', '0.4.1']
+        exclude:
+          - pg_version: 17
+            vectors_version: '0.3.0'
     
     steps:
       - name: Checkout Code
@@ -56,3 +59,4 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:pg${{ matrix.pg_version }}-${{ matrix.debian_version }}-pgvector${{ matrix.pgvector_version }}-vectors${{ matrix.vectors_version }}-vchord${{ matrix.vchord_version }}
           cache-from: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }}-pgvector${{ matrix.pgvector_version }}-vectors${{ matrix.vectors_version }}-vchord${{ matrix.vchord_version }}
           cache-to: type=gha,scope=pg${{ matrix.pg_version }}-${{ matrix.debian_version }}-pgvector${{ matrix.pgvector_version }}-vectors${{ matrix.vectors_version }}-vchord${{ matrix.vchord_version }},mode=max
+      
