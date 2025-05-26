@@ -8,6 +8,8 @@ This image builds upon the default `postgres` image and includes the following e
 
 Since migrations from one to the other typically require at least 2 of the above to be installed, this image includes all 3.
 
+[![Docker builds](https://github.com/sdebruyn/pg-allvectors/actions/workflows/build.yml/badge.svg)](https://github.com/sdebruyn/pg-allvectors/actions/workflows/build.yml)
+
 ## Usage
 
 Just replace your Postgres image with one of the following:
